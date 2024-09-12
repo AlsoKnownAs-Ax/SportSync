@@ -1,0 +1,85 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+.pnp
+.pnp.js
+
+# Production build
+dist/
+build/
+
+# Vuepress build output
+.vuepress/dist
+
+# Static assets cache
+.cache/
+
+# Local environment settings
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional jest cache directory
+jest/
+
+# IDE specific files
+*.swp
+*~
+.project
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Yarn lock files
+yarn.lock
+
+# Package lock file for npm
+package-lock.json
+
+# Coverage directory used by testing tools like jest
+coverage/
+
+# Build output from Next.js (if used)
+.next/
+
+# Nuxt.js build output
+.nuxt/
+
+# Optional tailwind config lockfile
+tailwind.config.js.lock
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity Check
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
