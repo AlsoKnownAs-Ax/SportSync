@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <vue-cal
-      class="vuecal--blue-theme vuecal"
+      class="vuecal--blue-theme"
       :selected-date="'2018-11-19'"
       :time-from="10 * 60"
       hide-weekends
       :events="events"
-      editable-events
+      :editable-events="false"
       events-count-on-year-view
       :events-on-month-view="'short'"
     />

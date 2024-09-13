@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-900 text-white min-h-screen p-4">
     <div class="max-w-md mx-auto space-y-4">
-      <FeedNavBar />
+      <FeedNavBar :title="title" />
     </div>
   </div>
 </template>
@@ -13,6 +13,11 @@ export default {
   name: "FeedView",
   components: {
     FeedNavBar,
+  },
+  data() {
+    return {
+      title: "News",
+    };
   },
 };
 </script>
