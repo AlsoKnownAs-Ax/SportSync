@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <vue-cal
-      class="vuecal--blue-theme"
+      class="vuecal--green-blue-theme"
       :selected-date="'2018-11-19'"
       :time-from="10 * 60"
       hide-weekends
@@ -73,3 +73,28 @@ export default {
   },
 };
 </script>
+
+<style>
+.vuecal--green-blue-theme .vuecal__header {
+  background-color: #03866c; /* Custom Green from logo */
+  color: white;
+}
+
+.vuecal--green-blue-theme .vuecal__cell {
+  background-color: #111827; /* Light background */
+}
+
+.vuecal--green-blue-theme .vuecal__cell:hover {
+  background-color: #55efc325; /* Hover effect with light green */
+}
+
+.vuecal--green-blue-theme .vuecal__weekdays,
+.vuecal__time {
+  color: #0971c0; /* Blue text */
+}
+
+.vuecal--green-blue-theme .vuecal__event {
+  background-color: #00629b; /* Event background color */
+  color: white; /* Event text color */
+}
+</style>
