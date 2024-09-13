@@ -11,6 +11,7 @@
             type="text"
             placeholder="Username"
             class="w-full px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+            v-model="username"
           />
         </div>
         <div>
@@ -18,6 +19,7 @@
             type="password"
             placeholder="Password"
             class="w-full px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+            v-model="password"
           />
         </div>
         <div>
@@ -44,11 +46,30 @@
 
 <script>
 export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
   name: "LoginForm",
   methods: {
     submitForm(e) {
+      const username = this.username;
+      const password = this.password;
+      (this.username = ""), (this.password = "");
       e.preventDefault();
-      console.log("Form submitted");
+
+      if (!username || !password) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      if (username === "admin" && password === "admin") {
+        this.$router.push("/feed");
+      } else {
+        alert("Invalid credentials");
+      }
     },
   },
 };
