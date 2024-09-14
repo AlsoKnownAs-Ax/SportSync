@@ -1,5 +1,5 @@
 <template>
-  <header
+  <div
     class="flex justify-between items-center bg-gray-800 rounded-full p-4 h-16"
   >
     <div @click="goToCalendar">
@@ -17,7 +17,7 @@
         class="w-full h-full object-cover"
       />
     </div>
-  </header>
+  </div>
 </template>
 
 <script>

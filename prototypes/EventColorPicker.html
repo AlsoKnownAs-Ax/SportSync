@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Color Picker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              darkbg: "#1a1a1a",
+              darkcard: "#2a2a2a",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .color-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .color-circle:hover {
+        transform: scale(1.1);
+      }
+      .color-circle.selected {
+        box-shadow: 0 0 0 3px white;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-darkbg text-white min-h-screen flex items-center justify-center"
+  >
+    <div
+      class="bg-darkcard p-6 rounded-t-xl shadow-lg w-full max-w-2xl absolute bottom-0"
+    >
+      <h2 class="text-xl font-semibold mb-4">Event Color Picker</h2>
+      <div class="flex flex-wrap gap-4 justify-center mb-6">
+        <div class="color-circle bg-green-300"></div>
+        <div class="color-circle bg-pink-300"></div>
+        <div class="color-circle bg-blue-300"></div>
+        <div class="color-circle bg-yellow-300"></div>
+        <div class="color-circle bg-blue-500"></div>
+        <div class="color-circle bg-teal-400"></div>
+        <div class="color-circle bg-red-300"></div>
+        <div class="color-circle bg-red-500"></div>
+        <div class="color-circle bg-red-400"></div>
+      </div>
+      <div class="text-center">
+        <button
+          id="saveBtn"
+          class="bg-blue-300 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-400 transition-colors"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const colorCircles = document.querySelectorAll(".color-circle");
+      let selectedColor = null;
+
+      colorCircles.forEach((circle) => {
+        circle.addEventListener("click", () => {
+          colorCircles.forEach((c) => c.classList.remove("selected"));
+          circle.classList.add("selected");
+          selectedColor = window.getComputedStyle(circle).backgroundColor;
+        });
+      });
+
+      const saveBtn = document.getElementById("saveBtn");
+      saveBtn.addEventListener("click", () => {
+        if (selectedColor) {
+          alert(`Selected color: ${selectedColor}`);
+          // Here you would typically save the color to your application's state or send it to a server
+        } else {
+          alert("Please select a color before saving.");
+        }
+      });
+    </script>
+  </body>
+</html>

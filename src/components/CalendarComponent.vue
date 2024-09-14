@@ -4,7 +4,6 @@
       class="vuecal--green-blue-theme"
       :selected-date="'2018-11-19'"
       :time-from="10 * 60"
-      hide-weekends
       :events="events"
       :editable-events="false"
       events-count-on-year-view
@@ -76,25 +75,51 @@ export default {
 
 <style>
 .vuecal--green-blue-theme .vuecal__header {
-  background-color: #03866c; /* Custom Green from logo */
+  background-color: #03866c;
   color: white;
 }
 
 .vuecal--green-blue-theme .vuecal__cell {
-  background-color: #111827; /* Light background */
+  background-color: #111827;
 }
 
 .vuecal--green-blue-theme .vuecal__cell:hover {
-  background-color: #55efc325; /* Hover effect with light green */
+  background-color: #55efc325;
 }
 
 .vuecal--green-blue-theme .vuecal__weekdays,
 .vuecal__time {
-  color: #0971c0; /* Blue text */
+  color: #0971c0;
 }
 
 .vuecal--green-blue-theme .vuecal__event {
-  background-color: #00629b; /* Event background color */
-  color: white; /* Event text color */
+  text-align: center;
+  background-color: #00629b;
+  color: white;
+  font-size: 1rem;
+
+  text-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.vuecal--green-blue-theme .vuecal__event-time {
+  /* display: none; */
+  font-size: 0.7rem;
+}
+
+/* Small Devices */
+@media (max-width: 640px) {
+  .vuecal--green-blue-theme .vuecal__event {
+    font-size: 0.7rem;
+  }
+  .vuecal--green-blue-theme .vuecal__event-time {
+    /* display: none; */
+    font-size: 0.5rem;
+  }
 }
 </style>

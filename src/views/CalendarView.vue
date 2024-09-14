@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-gray-900 text-white h-screen p-4">
+  <div class="bg-gray-900 text-white h-screen">
     <div class="max-w-md mx-auto space-y-4">
       <FeedNavBar :title="title" />
     </div>
-    <div class="container mx-auto space-y-4 my-10">
+    <div class="mx-auto my-10 md:p-10">
       <CalendarComponent />
     </div>
   </div>
