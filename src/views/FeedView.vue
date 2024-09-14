@@ -1,7 +1,11 @@
 <template>
   <div class="relative w-full h-full bg-gray-900">
     <div class="text-white mx-auto space-y-4 sticky top-3 z-50 max-w-md">
-      <FeedNavBar :title="title" />
+      <FeedNavBar
+        :title="title"
+        :routeLink="routeLink"
+        :navbarIcon="navbarIcon"
+      />
     </div>
     <div
       class="bg-gray-900 text-white min-h-screen p-4 overflow-auto no-scrollbar"
@@ -18,7 +22,7 @@
 </template>
 
 <script>
-import FeedNavBar from "@/components/FeedNavBar.vue";
+import FeedNavBar from "@/components/NavBar.vue";
 import FeedPost from "@/components/FeedPost.vue";
 
 export default {
@@ -29,7 +33,9 @@ export default {
   },
   data() {
     return {
+      routeLink: "/calendar",
       title: "News",
+      navbarIcon: "calendar",
     };
   },
 };

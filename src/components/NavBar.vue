@@ -2,9 +2,9 @@
   <div
     class="flex justify-between items-center bg-gray-800 rounded-full p-4 h-16"
   >
-    <div @click="goToCalendar">
+    <div @click="Navigate">
       <i
-        data-feather="calendar"
+        ref="icon"
         class="w-6 h-6 text-red-500 flex items-center space-x-2 cursor-pointer transition duration-300 hover:text-red-400"
       ></i>
     </div>
@@ -27,16 +27,29 @@ export default {
   name: "FeedNavBar",
   props: {
     title: {
-      type: String, // Define the prop type
-      required: true, // Ensure that the prop is passed
+      type: String,
+      required: true,
+    },
+    routeLink: {
+      type: String,
+      required: true,
+    },
+    navbarIcon: {
+      type: String,
+      required: true,
     },
   },
   methods: {
-    goToCalendar() {
-      this.$router.push("/calendar");
+    Navigate() {
+      if (this.routeLink) {
+        this.$router.push(this.routeLink);
+      } else {
+        console.error("No route link provided.");
+      }
     },
   },
   mounted() {
+    this.$refs.icon.setAttribute("data-feather", this.navbarIcon);
     feather.replace();
   },
 };
