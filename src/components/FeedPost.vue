@@ -10,11 +10,7 @@
           />
           <h1 class="text-xl font-bold">Transfer</h1>
         </div>
-        <img
-          src="https://images.unsplash.com/photo-1614632537239-e910a09f3f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-          alt="Soccer Ball"
-          class="w-6 h-6"
-        />
+        <img src="@\assets\soccer.png" alt="Soccer Ball" class="w-6 h-6" />
       </div>
       <div class="bg-gray-800 rounded-lg p-4 mb-4">
         <p class="text-sm">Player X has started their journey at [ Club ]</p>

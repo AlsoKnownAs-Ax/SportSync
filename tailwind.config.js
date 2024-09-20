@@ -12,7 +12,6 @@ module.exports = {
     function ({ addUtilities }) {
       addUtilities({
         ".no-scrollbar": {
-          /* Hide scrollbar for modern browsers */
           "scrollbar-width": "none" /* Firefox */,
           "-ms-overflow-style": "none" /* Internet Explorer 10+ */,
         },

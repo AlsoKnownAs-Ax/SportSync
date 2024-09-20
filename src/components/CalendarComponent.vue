@@ -2,7 +2,7 @@
   <div id="app">
     <vue-cal
       class="vuecal--green-blue-theme"
-      :selected-date="'2018-11-19'"
+      :selected-date="'2024-9-9'"
       :time-from="10 * 60"
       :events="events"
       :editable-events="false"
@@ -24,46 +24,29 @@ export default {
     return {
       events: [
         {
-          start: "2018-11-19 10:35",
-          end: "2018-11-19 11:30",
-          title: "Doctor appointment",
+          start: "2024-9-9 10:30",
+          end: "2024-9-9 11:30",
+          title: "Match",
         },
         {
-          start: "2018-11-19 18:30",
-          end: "2018-11-19 19:15",
-          title: "Dentist appointment",
+          start: "2024-9-12 15:35",
+          end: "2024-9-12 18:30",
+          title: "Match",
         },
         {
-          start: "2018-11-20 18:30",
-          end: "2018-11-20 20:30",
-          title: "Crossfit",
+          start: "2024-9-15 19:30",
+          end: "2024-9-15 23:00",
+          title: "Match",
         },
         {
-          start: "2018-11-21 11:00",
-          end: "2018-11-21 13:00",
-          title: "Brunch with Jane",
+          start: "2019-09-14 19:30",
+          end: "2019-09-14 23:00",
+          title: "Match",
         },
         {
-          start: "2018-11-21 19:30",
-          end: "2018-11-21 23:00",
-          title: "Swimming lesson",
-        },
-        {
-          start: "2019-09-30 19:30",
-          end: "2019-09-30 23:00",
-          title: "Swimming lesson",
-        },
-        {
-          start: "2018-11-19 12:00",
-          end: "2018-11-19 14:00",
-          title: "LUNCH",
-          class: "lunch",
-          background: true,
-        },
-        {
-          start: "2018-11-20 12:00",
-          end: "2018-11-20 14:00",
-          title: "LUNCH",
+          start: "2024-9-9 12:00",
+          end: "2024-9-9 14:00",
+          title: "Match",
           class: "lunch",
           background: true,
         },

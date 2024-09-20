@@ -36,6 +36,14 @@ export default {
       routeLink: "/calendar",
       title: "News",
       navbarIcon: "calendar",
+      posts: [
+        {
+          id: 1,
+          title: "Lorem ipsum dolor sit amet",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nunc nec nunc.",
+        },
+      ],
     };
   },
 };
