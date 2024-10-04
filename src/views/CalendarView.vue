@@ -1,12 +1,6 @@
 <template>
   <div class="bg-gray-900 text-white h-screen">
-    <div class="text-white mx-auto space-y-4 sticky top-3 z-50 max-w-md">
-      <FeedNavBar
-        :title="title"
-        :routeLink="routeLink"
-        :navbarIcon="navbarIcon"
-      />
-    </div>
+    <FeedNavBar :title="title" />
     <div class="mx-auto my-10 md:p-10">
       <CalendarComponent />
     </div>
@@ -25,9 +19,7 @@ export default {
   },
   data() {
     return {
-      routeLink: "/feed",
-      title: "Game Calendar",
-      navbarIcon: "arrow-left",
+      title: "Match Schedule",
     };
   },
 };

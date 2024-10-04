@@ -1,27 +1,55 @@
 <template>
   <div
-    class="flex justify-between items-center bg-gray-800 rounded-full p-4 h-16"
+    class="text-white flex justify-between items-center bg-gray-800 p-4 h-16 sticky z-50 top-0"
   >
-    <div @click="Navigate">
-      <i
-        ref="icon"
-        class="w-6 h-6 text-red-500 flex items-center space-x-2 cursor-pointer transition duration-300 hover:text-red-400"
-      ></i>
-    </div>
-    <div class="font-bold uppercase">{{ title }}</div>
+    <img
+      @click="Navigate('/feed')"
+      src="@/assets/logo.png"
+      alt=""
+      class="flex w-16 h-16 cursor-pointer transition duration-200 hover:opacity-70 items-center"
+    />
 
-    <div class="w-10 h-10 bg-blue-500 rounded-full overflow-hidden">
-      <img
-        src="@/assets/profile.png"
-        alt="User avatar"
-        class="w-full h-full object-cover"
-      />
+    <!-- Title Page -->
+    <div
+      class="font-bold uppercase absolute left-1/2 transform -translate-x-1/2"
+    >
+      {{ title }}
     </div>
+
+    <!-- Nav Bar container -->
+    <nav class="p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <ul class="flex space-x-8">
+          <li>
+            <a
+              @click="Navigate('/calendar')"
+              class="text-white hover:text-gray-300 cursor-pointer"
+              >Calendar</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-white hover:text-gray-300 cursor-pointer"
+              >Players</a
+            >
+          </li>
+        </ul>
+
+        <div
+          class="w-10 h-10 rounded-full overflow-hidden ml-10 cursor-pointer transition duration-200 hover:scale-105"
+        >
+          <img
+            src="@/assets/profile.png"
+            alt="User avatar"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </nav>
   </div>
 </template>
 
 <script>
-import feather from "feather-icons";
+// import feather from "feather-icons";
 
 export default {
   name: "FeedNavBar",
@@ -30,27 +58,19 @@ export default {
       type: String,
       required: true,
     },
-    routeLink: {
-      type: String,
-      required: true,
-    },
-    navbarIcon: {
-      type: String,
-      required: true,
-    },
   },
   methods: {
-    Navigate() {
-      if (this.routeLink) {
-        this.$router.push(this.routeLink);
+    Navigate(routeLink) {
+      if (routeLink) {
+        this.$router.push(routeLink);
       } else {
         console.error("No route link provided.");
       }
     },
   },
   mounted() {
-    this.$refs.icon.setAttribute("data-feather", this.navbarIcon);
-    feather.replace();
+    // this.$refs.icon.setAttribute("data-feather", this.navbarIcon);
+    // feather.replace();
   },
 };
 </script>

@@ -1,12 +1,6 @@
 <template>
   <div class="relative w-full h-full bg-gray-900">
-    <div class="text-white mx-auto space-y-4 sticky top-3 z-50 max-w-md">
-      <FeedNavBar
-        :title="title"
-        :routeLink="routeLink"
-        :navbarIcon="navbarIcon"
-      />
-    </div>
+    <FeedNavBar :title="title" />
     <div
       class="bg-gray-900 text-white min-h-screen p-4 overflow-auto no-scrollbar"
     >
@@ -33,9 +27,7 @@ export default {
   },
   data() {
     return {
-      routeLink: "/calendar",
       title: "News",
-      navbarIcon: "calendar",
       posts: [
         {
           id: 1,
