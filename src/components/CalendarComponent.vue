@@ -21,46 +21,56 @@
 import vuecal from "vue-cal";
 import "vue-cal/dist/vuecal.css";
 import { EventBus } from "@/eventBus.js";
+import matchSchedule from "@/dummyData/matchSchedule";
 
 export default {
   components: {
     VueCal: vuecal,
   },
-  props: {
-    // events: {
-    //   type: Array,
-    //   required: true,
-    // },
-  },
   data() {
     return {
-      selectedEventId: {},
+      selectedEventId: null,
       events: [
-        {
-          id: 1,
-          start: "2024-10-2 12:00",
-          end: "2024-10-2 14:00",
-          title: "Match 6",
-          content: '<i class="bi bi-bell-fill"></i>',
-          type: "soccer",
-          class: "soccer",
-          background: true,
-        },
-        {
-          id: 2,
-          start: "2024-10-3 11:00",
-          end: "2024-10-3 12:00",
-          title: "Match 6",
-          content: '<i class="bi bi-bell-fill"></i>',
-          type: "basketball",
-          class: "basketball",
-          background: true,
-        },
+        // {
+        //   id: 1,
+        //   start: "2024-10-2 12:00",
+        //   end: "2024-10-2 14:00",
+        //   title: "Match 6",
+        //   content: '<i class="bi bi-bell-fill"></i>',
+        //   type: "soccer",
+        //   class: "soccer",
+        //   background: true,
+        // },
       ],
     };
   },
   methods: {
-    computeEvents: function () {},
+    computeEvents: function () {
+      const followingTeams = this.$store.getters.getFollowingTeams;
+
+      this.events = matchSchedule.matches
+        .filter(
+          (team) =>
+            followingTeams.includes(team.home_team) ||
+            followingTeams.includes(team.away_team)
+        )
+        .map((match) => {
+          return {
+            id: match.id,
+            start: match.start,
+            end: this.addNinetyMinutes(match.start),
+            title: `${match.home_team} vs ${match.away_team}`,
+            content: `<i class="bi bi-bell-fill"></i>`,
+            type: match.type,
+            class: match.type,
+            background: true,
+            home_team: match.home_team,
+            away_team: match.away_team,
+          };
+        });
+
+      return this.events;
+    },
     getCurrentDate: function () {
       const today = new Date();
       const yyyy = today.getFullYear();
@@ -86,7 +96,7 @@ export default {
       return `${yyyy}/${mm}/${dd} ${hh}:${mins}`;
     },
     onEventClick(event, e) {
-      this.selectedEventId = event.id;
+      this.selectedEventId = Number(event.id);
 
       EventBus.emit("event-clicked");
       e.stopPropagation();
@@ -96,18 +106,14 @@ export default {
     EventBus.on("color-selected", (sportClass) => {
       if (!this.selectedEventId) return;
 
-      console.log("selectedEventId:", this.selectedEventId);
-
       this.events.find((event) => event.id === this.selectedEventId).class =
         sportClass;
 
       this.events = [...this.events]; // Trigger a re-render
-
-      console.log("new Sports class:", sportClass);
     });
   },
   mounted() {
-    // this.computeEvents();
+    this.computeEvents();
   },
 };
 </script>

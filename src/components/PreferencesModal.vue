@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="show"
-    class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center z-50"
+    class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-10 flex justify-center items-center z-50"
   >
     <div
       class="bg-dark-200 p-4 rounded-lg shadow-lg w-96 relative flex items-center flex-col"

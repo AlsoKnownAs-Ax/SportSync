@@ -92,19 +92,23 @@ export default {
   },
   methods: {
     toggleShow(show) {
-      if (this.show == show) return;
-      const colorPicker = this.$refs.colorPicker;
+      try {
+        if (!this.rendered || !this.$refs.colorPicker) return;
+        if (this.show == show) return;
 
-      if (!colorPicker) return;
+        const colorPicker = this.$refs.colorPicker;
 
-      this.show = show;
+        this.show = show;
 
-      if (this.show) {
-        colorPicker.classList.remove("slide-down");
-        colorPicker.classList.add("slide-up");
-      } else {
-        colorPicker.classList.remove("slide-up");
-        colorPicker.classList.add("slide-down");
+        if (this.show) {
+          colorPicker.classList.remove("slide-down");
+          colorPicker.classList.add("slide-up");
+        } else {
+          colorPicker.classList.remove("slide-up");
+          colorPicker.classList.add("slide-down");
+        }
+      } catch (error) {
+        console.error(error);
       }
     },
     selectColor(sportClass, event) {

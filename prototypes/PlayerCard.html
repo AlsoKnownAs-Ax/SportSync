@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                100: "#1E293B",
+                200: "#334155",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-dark-100 text-white min-h-screen flex items-center justify-center"
+  >
+    <div class="container mx-auto px-4">
+      <div class="bg-dark-200 rounded-3xl p-6 max-w-2xl mx-auto shadow-lg">
+        <div class="flex items-center space-x-6">
+          <img
+            src="https://source.unsplash.com/random/100x100?face"
+            alt="Player"
+            class="w-24 h-24 rounded-full object-cover"
+          />
+          <h1 class="text-2xl font-bold">Lionel Messi</h1>
+        </div>
+        <div class="mt-6 grid grid-cols-6 gap-4 text-center">
+          <div>
+            <p class="font-semibold">STR</p>
+            <p class="text-xl">90</p>
+          </div>
+          <div>
+            <p class="font-semibold">DRI</p>
+            <p class="text-xl">95</p>
+          </div>
+          <div>
+            <p class="font-semibold">DRI</p>
+            <p class="text-xl">95</p>
+          </div>
+          <div>
+            <p class="font-semibold">DRI</p>
+            <p class="text-xl">95</p>
+          </div>
+          <div>
+            <p class="font-semibold">DRI</p>
+            <p class="text-xl">95</p>
+          </div>
+          <div>
+            <p class="font-semibold">DRI</p>
+            <p class="text-xl">95</p>
+          </div>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold">
+            Favorite dribbling: <span class="text-blue-400">body feints</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
