@@ -1,4 +1,3 @@
-// src/services/feedService.js
 import preferenceService from "./preferenceService";
 import { sortPostsByPreference } from "../algorithms/postSorting";
 
@@ -6,7 +5,6 @@ export async function getSortedFeedPosts() {
   const posts = await fetchPosts();
   const likedPosts = preferenceService.getLikedPosts();
 
-  // Check if each post has been liked before and set the `liked` status
   posts.forEach((post) => {
     post.liked = !!likedPosts[post.id]; // Convert to boolean
 
@@ -18,7 +16,22 @@ export async function getSortedFeedPosts() {
     }
   });
 
-  return sortPostsByPreference(posts);
+  const scoredPosts = sortPostsByPreference(posts);
+
+  // Add a randomness factor for posts to determine final order
+  const weightedPosts = scoredPosts.map((post) => {
+    // Higher scores have less randomness
+    const randomFactor = Math.random() ** 2 * 2 * (1 - post.score / 100);
+    return {
+      ...post,
+      weightedScore: post.score + randomFactor, // Add a random factor to the score
+    };
+  });
+
+  console.table(weightedPosts);
+
+  // Sort the posts based on the weighted score (higher scores at the top)
+  return weightedPosts.sort((a, b) => b.weightedScore - a.weightedScore);
 }
 async function fetchPosts() {
   return [
