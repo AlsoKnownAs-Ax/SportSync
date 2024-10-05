@@ -22,13 +22,22 @@
         <ul class="flex space-x-8">
           <li>
             <a
+              @click="Navigate('/feed')"
+              class="text-white hover:text-gray-300 cursor-pointer"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
               @click="Navigate('/calendar')"
               class="text-white hover:text-gray-300 cursor-pointer"
               >Calendar</a
             >
           </li>
           <li>
-            <a href="#" class="text-white hover:text-gray-300 cursor-pointer"
+            <a
+              @click="Navigate('/players')"
+              class="text-white hover:text-gray-300 cursor-pointer"
               >Players</a
             >
           </li>

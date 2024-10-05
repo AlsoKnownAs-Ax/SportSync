@@ -3,27 +3,27 @@
     <div class="max-w-md w-full bg-darkBlue rounded-lg shadow-lg p-6">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png"
-            alt="Barcelona Logo"
-            class="w-8 h-8 mr-2"
-          />
-          <h1 class="text-xl font-bold">Transfer</h1>
+          <img :src="getTeamLogo()" alt="" class="w-8 h-8 mr-2" />
+          <h1 class="text-xl font-bold">{{ title }}</h1>
         </div>
         <img src="@\assets\soccer.png" alt="Soccer Ball" class="w-6 h-6" />
       </div>
       <div class="bg-gray-800 rounded-lg p-4 mb-4">
-        <p class="text-sm">Player X has started their journey at [ Club ]</p>
+        <p class="text-sm">{{ content }}</p>
       </div>
     </div>
     <div class="flex justify-between p-2">
-      <button class="text-gray-400 hover:text-white transition">
+      <button
+        @click="toggleLike"
+        class="hover:text-white transition text-gray-400"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
-          fill="none"
+          :fill="isLiked ? 'red' : 'none'"
           viewBox="0 0 24 24"
-          stroke="currentColor"
+          :stroke="isLiked ? 'red' : 'currentColor'"
+          :class="{ 'animate-like': isLiked }"
         >
           <path
             stroke-linecap="round"
@@ -33,13 +33,17 @@
           />
         </svg>
       </button>
-      <button class="text-gray-400 hover:text-white transition">
+      <button
+        @click="toggleSave"
+        class="hover:text-white transition text-gray-400"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
-          fill="none"
+          :fill="saved ? 'yellow' : 'none'"
           viewBox="0 0 24 24"
-          stroke="currentColor"
+          :stroke="saved ? 'yellow' : 'currentColor'"
+          :class="{ 'animate-save': saved }"
         >
           <path
             stroke-linecap="round"
@@ -54,18 +58,63 @@
 </template>
 
 <script>
+import preferenceService from "@/services/preferenceService";
+import teamLogos from "@/config/teamLogos";
+
 export default {
   name: "FeedPost",
   props: {
-    // Define your props here
+    id: {
+      type: Number,
+      required: true,
+    },
+    team: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    liked: {
+      type: Boolean,
+      default: false,
+    },
+    saved: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      // Define your component data here
+      isLiked: this.liked,
+      isSaved: this.saved,
     };
   },
   methods: {
-    // Define your component methods here
+    toggleLike: function () {
+      this.isLiked = !this.isLiked;
+
+      if (this.isLiked) {
+        preferenceService.updatePreference(this.id, this.team);
+      } else {
+        preferenceService.unlikePost(this.id, this.team);
+      }
+    },
+    toggleSave: function () {
+      this.isSaved = !this.isSaved;
+    },
+    getTeamLogo: function () {
+      console.log(this.team);
+      console.log(this.team.toLowerCase());
+      const formattedTeamName = this.team.toLowerCase().replace(/ /g, "_");
+
+      return teamLogos[formattedTeamName] || teamLogos["default"];
+    },
   },
   computed: {
     // Define your computed properties here
@@ -75,3 +124,26 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* Like animation */
+@keyframes like-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-like {
+  animation: like-pop 0.3s ease-in-out;
+}
+
+.animate-save {
+  animation: like-pop 0.3s ease-in-out;
+}
+</style>
