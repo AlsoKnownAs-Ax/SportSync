@@ -66,6 +66,7 @@ export default {
       }
 
       if (username === "admin" && password === "admin") {
+        this.$store.dispatch("login"); // Trigger Vuex action
         this.$router.push("/feed");
       } else {
         alert("Invalid credentials");

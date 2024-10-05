@@ -16,10 +16,12 @@
         />
       </div>
     </div>
+    <PreferencesModal />
   </div>
 </template>
 
 <script>
+import PreferencesModal from "@/components/PreferencesModal.vue";
 import { getSortedFeedPosts } from "../services/feedService";
 import NavBar from "@/components/NavBar.vue";
 import FeedPost from "@/components/FeedPost.vue";
@@ -27,6 +29,7 @@ import FeedPost from "@/components/FeedPost.vue";
 export default {
   name: "FeedView",
   components: {
+    PreferencesModal,
     NavBar,
     FeedPost,
   },

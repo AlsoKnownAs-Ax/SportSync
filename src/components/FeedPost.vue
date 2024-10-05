@@ -6,7 +6,13 @@
           <img :src="getTeamLogo()" alt="" class="w-8 h-8 mr-2" />
           <h1 class="text-xl font-bold">{{ title }}</h1>
         </div>
-        <img src="@\assets\soccer.png" alt="Soccer Ball" class="w-6 h-6" />
+        <img
+          ref="followIcon"
+          @click="followTeam()"
+          :src="getFollowingIcon()"
+          alt="follow"
+          class="w-8 cursor-pointer transition hover:opacity-80"
+        />
       </div>
       <div class="bg-gray-800 rounded-lg p-4 mb-4">
         <p class="text-sm">{{ content }}</p>
@@ -93,6 +99,7 @@ export default {
     return {
       isLiked: this.liked,
       isSaved: this.saved,
+      isFollowing: false,
     };
   },
   methods: {
@@ -109,11 +116,32 @@ export default {
       this.isSaved = !this.isSaved;
     },
     getTeamLogo: function () {
-      console.log(this.team);
-      console.log(this.team.toLowerCase());
       const formattedTeamName = this.team.toLowerCase().replace(/ /g, "_");
 
       return teamLogos[formattedTeamName] || teamLogos["default"];
+    },
+    getFollowingIcon: function () {
+      return this.isFollowing
+        ? require("@/assets/icons/unfollow.svg")
+        : require("@/assets/icons/follow.svg");
+    },
+    followTeam: function () {
+      this.isFollowing = !this.isFollowing;
+
+      const followIcon = this.$refs.followIcon;
+
+      const animationClass = this.isFollowing
+        ? "animate-follow"
+        : "animate-unfollow";
+      followIcon.classList.add(animationClass);
+
+      followIcon.addEventListener(
+        "animationend",
+        () => {
+          followIcon.classList.remove(animationClass);
+        },
+        { once: true } // Ensure this listener only triggers once per animation
+      );
     },
   },
   computed: {
@@ -145,5 +173,44 @@ export default {
 
 .animate-save {
   animation: like-pop 0.3s ease-in-out;
+}
+
+/* Follow Animation */
+@keyframes follow-pop {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes unfollow-pop {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-follow {
+  animation: follow-pop 0.5s ease-in-out;
+}
+
+.animate-unfollow {
+  animation: unfollow-pop 0.5s ease-in-out;
 }
 </style>
