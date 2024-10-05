@@ -3,7 +3,7 @@
     <div class="max-w-md w-full bg-darkBlue rounded-lg shadow-lg p-6">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center">
-          <img :src="getTeamLogo()" alt="" class="w-8 h-8 mr-2" />
+          <img :src="getTeamLogo()" alt="" class="w-8 mr-2" />
           <h1 class="text-xl font-bold">{{ title }}</h1>
         </div>
         <img
@@ -46,10 +46,10 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
-          :fill="saved ? 'yellow' : 'none'"
+          :fill="isSaved ? 'yellow' : 'none'"
           viewBox="0 0 24 24"
-          :stroke="saved ? 'yellow' : 'currentColor'"
-          :class="{ 'animate-save': saved }"
+          :stroke="isSaved ? 'yellow' : 'currentColor'"
+          :class="{ 'animate-save': isSaved }"
         >
           <path
             stroke-linecap="round"

@@ -13,49 +13,55 @@
     <h2 class="text-xl font-semibold mb-4">Event Color Picker</h2>
     <div class="flex flex-wrap gap-4 justify-center mb-6">
       <div
-        class="color-circle bg-green-300"
-        @click="selectColor('bg-green-300', $event)"
+        class="color-circle"
+        style="background-color: #48bb78"
+        @click="selectColor('soccer', $event)"
       ></div>
       <div
-        class="color-circle bg-pink-300"
-        @click="selectColor('bg-pink-300', $event)"
+        class="color-circle"
+        style="background-color: #4299e1"
+        @click="selectColor('basketball', $event)"
       ></div>
       <div
-        class="color-circle bg-blue-300"
-        @click="selectColor('bg-blue-300', $event)"
+        class="color-circle"
+        style="background-color: #e53e3e"
+        @click="selectColor('tennis', $event)"
       ></div>
       <div
-        class="color-circle bg-yellow-300"
-        @click="selectColor('bg-yellow-300', $event)"
+        class="color-circle"
+        style="background-color: #ed8936"
+        @click="selectColor('hockey', $event)"
       ></div>
       <div
-        class="color-circle bg-blue-500"
-        @click="selectColor('bg-blue-500', $event)"
+        class="color-circle"
+        style="background-color: #9f7aea"
+        @click="selectColor('boxing', $event)"
       ></div>
       <div
-        class="color-circle bg-teal-400"
-        @click="selectColor('bg-teal-400', $event)"
+        class="color-circle"
+        style="background-color: #38b2ac"
+        @click="selectColor('default', $event)"
       ></div>
       <div
-        class="color-circle bg-red-300"
-        @click="selectColor('bg-red-300', $event)"
+        class="color-circle"
+        style="background-color: #f6e05e"
+        @click="selectColor('voleyball', $event)"
       ></div>
       <div
-        class="color-circle bg-red-500"
-        @click="selectColor('bg-red-500', $event)"
+        class="color-circle"
+        style="background-color: #f6ad55"
+        @click="selectColor('golf', $event)"
       ></div>
       <div
-        class="color-circle bg-red-400"
-        @click="selectColor('bg-red-400', $event)"
+        class="color-circle"
+        style="background-color: #f687b3"
+        @click="selectColor('gym', $event)"
       ></div>
-    </div>
-    <div class="text-center">
-      <button
-        id="saveBtn"
-        class="bg-blue-300 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-400 transition-colors"
-      >
-        Save
-      </button>
+      <div
+        class="color-circle"
+        style="background-color: #63b3ed"
+        @click="selectColor('swimming', $event)"
+      ></div>
     </div>
   </div>
 </template>
@@ -68,7 +74,6 @@ export default {
   props: {},
   data() {
     return {
-      event: null,
       show: false,
       rendered: false,
       selectedColor: null,
@@ -78,12 +83,11 @@ export default {
   created() {
     const bus = EventBus;
 
-    bus.on("event-clicked", (event) => {
+    bus.on("event-clicked", () => {
       this.rendered = true;
       this.$nextTick(() => {
         this.toggleShow(true);
       });
-      this.event = event;
     });
   },
   methods: {
@@ -103,13 +107,13 @@ export default {
         colorPicker.classList.add("slide-down");
       }
     },
-    selectColor(color, event) {
+    selectColor(sportClass, event) {
       // Remove 'selected' class from the previously selected element
       if (this.activeElement) {
         this.activeElement.classList.remove("selected");
       }
 
-      this.selectedColor = color;
+      EventBus.emit("color-selected", sportClass);
 
       const clickedElement = event.target;
       clickedElement.classList.add("selected");
