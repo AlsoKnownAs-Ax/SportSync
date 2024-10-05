@@ -8,6 +8,8 @@ export async function getSortedFeedPosts() {
   posts.forEach((post) => {
     post.liked = !!likedPosts[post.id]; // Convert to boolean
 
+    // Remove the post if it is liked
+    // When we will connect it to a DB we will remove this line and add a query to select non-liked posts
     if (post.liked) {
       const index = posts.indexOf(post);
       if (index > -1) {
@@ -27,8 +29,6 @@ export async function getSortedFeedPosts() {
       weightedScore: post.score + randomFactor, // Add a random factor to the score
     };
   });
-
-  console.table(weightedPosts);
 
   // Sort the posts based on the weighted score (higher scores at the top)
   return weightedPosts.sort((a, b) => b.weightedScore - a.weightedScore);

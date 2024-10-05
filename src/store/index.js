@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 
 const store = createStore({
   state: {
+    followingTeams: [],
     userPreferences: [],
     isLoggedIn: false,
     showPreferencesModal: false,
@@ -16,6 +17,14 @@ const store = createStore({
     },
     togglePreferencesModal(state, show) {
       state.showPreferencesModal = show;
+    },
+    followTeam(state, team) {
+      if (!state.followingTeams.includes(team)) {
+        state.followingTeams.push(team);
+      }
+    },
+    unFollowTeam(state, team) {
+      state.followingTeams = state.followingTeams.filter((t) => t !== team);
     },
   },
   actions: {
@@ -34,6 +43,7 @@ const store = createStore({
     getUserPreferences: (state) => state.userPreferences,
     isLoggedIn: (state) => state.isLoggedIn,
     showPreferencesModal: (state) => state.showPreferencesModal,
+    getFollowingTeams: (state) => state.followingTeams,
   },
 });
 

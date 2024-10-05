@@ -65,7 +65,7 @@
 
 <script>
 import preferenceService from "@/services/preferenceService";
-import teamLogos from "@/config/teamLogos";
+import teamLogos from "@/config/teamsData";
 
 export default {
   name: "FeedPost",
@@ -118,7 +118,7 @@ export default {
     getTeamLogo: function () {
       const formattedTeamName = this.team.toLowerCase().replace(/ /g, "_");
 
-      return teamLogos[formattedTeamName] || teamLogos["default"];
+      return teamLogos[formattedTeamName].logo || teamLogos["default"].logo;
     },
     getFollowingIcon: function () {
       return this.isFollowing
@@ -127,6 +127,12 @@ export default {
     },
     followTeam: function () {
       this.isFollowing = !this.isFollowing;
+
+      if (this.isFollowing) {
+        this.$store.commit("followTeam", this.team);
+      } else {
+        this.$store.commit("unFollowTeam", this.team);
+      }
 
       const followIcon = this.$refs.followIcon;
 

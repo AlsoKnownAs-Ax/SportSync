@@ -9,6 +9,8 @@ module.exports = {
           100: "#1a1a1a",
           200: "#2a2a2a",
         },
+        darkbg: "#1a1a1a",
+        darkcard: "#2a2a2a",
       },
     },
   },
