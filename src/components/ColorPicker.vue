@@ -19,17 +19,17 @@
       ></div>
       <div
         class="color-circle w-8 h-8"
-        style="background-color: #4299e1"
+        style="background-color: #f59d19"
         @click="selectColor('basketball', $event)"
       ></div>
       <div
         class="color-circle w-8 h-8"
-        style="background-color: #e53e3e"
+        style="background-color: #d6f526"
         @click="selectColor('tennis', $event)"
       ></div>
       <div
         class="color-circle w-8 h-8"
-        style="background-color: #ed8936"
+        style="background-color: #2579e7"
         @click="selectColor('hockey', $event)"
       ></div>
       <div
@@ -44,7 +44,7 @@
       ></div>
       <div
         class="color-circle w-8 h-8"
-        style="background-color: #f6e05e"
+        style="background-color: #ff2222"
         @click="selectColor('voleyball', $event)"
       ></div>
       <div
