@@ -121,11 +121,11 @@ export default {
 $default: #38b2ac;
 
 $soccer: #48bb78;
-$basketball: #4299e1;
-$tennis: #e53e3e;
-$hockey: #ed8936;
+$basketball: #f59d19;
+$tennis: #d6f526;
+$hockey: #2579e7;
 $boxing: #9f7aea;
-$voleyball: #f6e05e;
+$voleyball: #ff2222;
 $golf: #f6ad55;
 $gym: #f687b3;
 $swimming: #63b3ed;
@@ -178,9 +178,6 @@ $swimming: #63b3ed;
     }
     &.boxing {
       background-color: $boxing;
-    }
-    &.default {
-      background-color: $default;
     }
     &.default {
       background-color: $default;

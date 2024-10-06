@@ -11,7 +11,7 @@
 
     <!-- Title Page -->
     <div
-      class="font-bold uppercase absolute left-1/2 transform -translate-x-1/2"
+      class="font-bold uppercase absolute left-1/2 transform -translate-x-1/2 hidden sm:block"
     >
       {{ title }}
     </div>
@@ -23,7 +23,7 @@
           <li>
             <a
               @click="Navigate('/feed')"
-              class="text-white hover:text-gray-300 cursor-pointer"
+              class="text-white hover:text-gray-300 cursor-pointer hidden sm:block"
               >Home</a
             >
           </li>
@@ -37,7 +37,7 @@
           <li>
             <a
               @click="Navigate('/players')"
-              class="text-white hover:text-gray-300 cursor-pointer"
+              class="text-white hover:text-gray-300 cursor-pointer hidden sm:block"
               >Players</a
             >
           </li>

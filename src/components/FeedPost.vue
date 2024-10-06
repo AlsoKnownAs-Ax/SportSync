@@ -117,6 +117,7 @@ export default {
     },
     getTeamLogo: function () {
       const formattedTeamName = this.team.toLowerCase().replace(/ /g, "_");
+      console.log(formattedTeamName);
 
       return teamLogos[formattedTeamName].logo || teamLogos["default"].logo;
     },

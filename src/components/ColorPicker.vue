@@ -13,52 +13,52 @@
     <h2 class="text-xl font-semibold mb-4">Event Color Picker</h2>
     <div class="flex flex-wrap gap-4 justify-center mb-6">
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #48bb78"
         @click="selectColor('soccer', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #4299e1"
         @click="selectColor('basketball', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #e53e3e"
         @click="selectColor('tennis', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #ed8936"
         @click="selectColor('hockey', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #9f7aea"
         @click="selectColor('boxing', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #38b2ac"
         @click="selectColor('default', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #f6e05e"
         @click="selectColor('voleyball', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #f6ad55"
         @click="selectColor('golf', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #f687b3"
         @click="selectColor('gym', $event)"
       ></div>
       <div
-        class="color-circle"
+        class="color-circle w-8 h-8"
         style="background-color: #63b3ed"
         @click="selectColor('swimming', $event)"
       ></div>
@@ -131,8 +131,6 @@ export default {
 
 <style scoped>
 .color-circle {
-  width: 2.0833vw;
-  height: 2.0833vw;
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s;

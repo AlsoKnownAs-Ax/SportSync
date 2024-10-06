@@ -367,5 +367,47 @@ async function fetchPosts() {
       title: "Training Session",
       content: "Bayern Munich’s open training session draws huge crowds.",
     },
+    {
+      id: 51,
+      team: "Los Angeles Lakers",
+      title: "Game Recap",
+      content:
+        "Lakers overcome the Golden State Warriors in a nail-biting finish, 110-108.",
+    },
+    {
+      id: 52,
+      team: "Chicago Bulls",
+      title: "Trade News",
+      content:
+        "Chicago Bulls acquire a new point guard in a mid-season trade with the New York Knicks.",
+    },
+    {
+      id: 53,
+      team: "Team USA",
+      title: "Tournament Win",
+      content:
+        "Team USA wins the international volleyball tournament, defeating Brazil in the final match.",
+    },
+    {
+      id: 54,
+      team: "Brazil Volleyball",
+      title: "Player Retirement",
+      content:
+        "Brazilian volleyball legend announces retirement after an illustrious 15-year career.",
+    },
+    {
+      id: 55,
+      team: "Toronto Maple Leafs",
+      title: "Playoff Update",
+      content:
+        "Toronto Maple Leafs advance to the conference finals after defeating the Montreal Canadiens.",
+    },
+    {
+      id: 56,
+      team: "New York Rangers",
+      title: "Captain's Milestone",
+      content:
+        "Rangers' captain reaches 500 career points, marking a new milestone for the team.",
+    },
   ];
 }
