@@ -12,7 +12,7 @@
       <div
         class="font-semibold w-80 text-wrap text-white text-lg text-center flex items-center justify-center"
       >
-        What sports are you interested in ?
+        What days during the week are you free ?
       </div>
       <form @submit.prevent="submitForm">
         <div
@@ -22,51 +22,71 @@
             <input
               type="checkbox"
               class="form-checkbox text-blue-500 animated-checkbox"
-              name="sports"
-              value="Football"
-              v-model="selectedSports"
+              name="day"
+              value="monday"
+              v-model="selectedFreeDays"
             />
-            <span>Football</span>
+            <span>Monday</span>
           </label>
           <label class="flex items-center space-x-3">
             <input
               type="checkbox"
               class="form-checkbox text-blue-500 animated-checkbox"
-              name="sports"
-              value="Basketball"
-              v-model="selectedSports"
+              name="day"
+              value="tuesday"
+              v-model="selectedFreeDays"
             />
-            <span>Basketball</span>
+            <span>Tuesday</span>
           </label>
           <label class="flex items-center space-x-3">
             <input
               type="checkbox"
               class="form-checkbox text-blue-500 animated-checkbox"
-              name="sports"
-              value="Tennis"
-              v-model="selectedSports"
+              name="day"
+              value="wednesday"
+              v-model="selectedFreeDays"
             />
-            <span>Tennis</span>
+            <span>Wednesday</span>
           </label>
           <label class="flex items-center space-x-3">
             <input
               type="checkbox"
               class="form-checkbox text-blue-500 animated-checkbox"
-              name="sports"
-              value="Hockey"
-              v-model="selectedSports"
+              name="day"
+              value="thursday"
+              v-model="selectedFreeDays"
             />
-            <span>Hockey</span>
+            <span>Thursday</span>
           </label>
           <label class="flex items-center space-x-3">
             <input
               type="checkbox"
               class="form-checkbox text-blue-500 animated-checkbox"
-              name="sports"
-              value="Box"
-              v-model="selectedSports"
+              name="day"
+              value="friday"
+              v-model="selectedFreeDays"
             />
-            <span>Box</span>
+            <span>Friday</span>
+          </label>
+          <label class="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              class="form-checkbox text-blue-500 animated-checkbox"
+              name="day"
+              value="saturday"
+              v-model="selectedFreeDays"
+            />
+            <span>Saturday</span>
+          </label>
+          <label class="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              class="form-checkbox text-blue-500 animated-checkbox"
+              name="day"
+              value="sunday"
+              v-model="selectedFreeDays"
+            />
+            <span>Sunday</span>
           </label>
         </div>
         <button
@@ -83,14 +103,14 @@
 export default {
   data() {
     return {
-      selectedSports: [],
+      selectedFreeDays: [],
     };
   },
   computed: {
     show() {
-      console.log(this.$store.getters.showPreferencesModal);
+      console.log(this.$store.getters.isModalVisible);
 
-      return this.$store.getters.showPreferencesModal;
+      return this.$store.getters.isModalVisible;
     },
   },
   methods: {
@@ -98,10 +118,8 @@ export default {
       this.$store.commit("togglePreferencesModal", false);
     },
     submitForm() {
-      console.log("Selected Sports:", this.selectedSports);
-
-      alert(`You selected: ${this.selectedSports.join(", ")}`);
-
+      // alert(`You selected: ${this.$store.getters.getUserFreeDays.join(", ")}`);
+      this.$store.commit("setFreeDays", this.selectedFreeDays);
       this.closeModal();
     },
   },

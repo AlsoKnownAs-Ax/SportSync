@@ -5,8 +5,10 @@ const store = createStore({
   state: {
     followingTeams: [],
     userPreferences: [],
+    freeDays: [],
     isLoggedIn: false,
     showPreferencesModal: false,
+    showCalendarModal: false,
   },
   mutations: {
     setUserPreferences(state, preferences) {
@@ -18,6 +20,9 @@ const store = createStore({
     togglePreferencesModal(state, show) {
       state.showPreferencesModal = show;
     },
+    toggleCalendarModal(state, show) {
+      state.showCalendarModal = show;
+    },
     followTeam(state, team) {
       if (!state.followingTeams.includes(team)) {
         state.followingTeams.push(team);
@@ -25,6 +30,9 @@ const store = createStore({
     },
     unFollowTeam(state, team) {
       state.followingTeams = state.followingTeams.filter((t) => t !== team);
+    },
+    setFreeDays(state, days) {
+      state.freeDays = days;
     },
   },
   actions: {
@@ -42,8 +50,10 @@ const store = createStore({
   getters: {
     getUserPreferences: (state) => state.userPreferences,
     isLoggedIn: (state) => state.isLoggedIn,
-    showPreferencesModal: (state) => state.showPreferencesModal,
+    isModalVisible: (state) => state.showPreferencesModal,
+    isCalendarModalVisible: (state) => state.showCalendarModal,
     getFollowingTeams: (state) => state.followingTeams,
+    getUserFreeDays: (state) => state.freeDays,
   },
 });
 
